@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+### REDPANDA
+  redpanda:
+    container_name: redpanda
+    image: redpandadata/redpanda:latest
+    command:
+      - redpanda
+      - start
+      - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr internal://redpanda:9092,external://localhost:19092
+    ports:
+      - 18081:18081
+      - 18082:18082
+      - 19092:19092
+      - 19644:9644
+    volumes:
+      - redpanda:/var/lib/redpanda/data
+
+  redpanda-ui:
+    depends_on:
+      - redpanda
+    image: redpandadata/console
+    container_name: redpanda-ui
+    ports:
+      - 8085:8080
+    environment:
+    - KAFKA_BROKERS=redpanda:9092
+    entrypoint: /bin/sh
+    command: -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
+
+### BACK
+  node-app:
+    depends_on:
+      - redpanda
+      - mongodb
+    container_name: node-api
+    build: ./api
+    ports:
+      - "5000:5000"
+    environment:
+      - REDPANDA_BROKERS=redpanda:9092
+    restart: always
+
+  analyse:
+    depends_on:
+      - redpanda
+      - mongodb
+    container_name: node-analyse
+    build: ./analyse
+    ports:
+      - "50015:5000"
+    environment:
+      - REDPANDA_BROKERS=redpanda:9092
+      - MONGODB_URI=mongodb+srv://labhaze:labhaze@crypto.wgao2i4.mongodb.net/?retryWrites=true&w=majority
+    restart: always
+### DATABASES
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./mongodb:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: labhaze
+      MONGO_INITDB_ROOT_PASSWORD: labhaze
+      MONGO_INITDB_DATABASE: crypto-viz
+
+  client:
+    container_name: client
+    build: ./client
+    ports: 
+      - "3000:3000"
+    restart: always
+
+### VOLUMES
+volumes:
+  mongodb:
+  redpanda:
