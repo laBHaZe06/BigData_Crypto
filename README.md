@@ -28,7 +28,16 @@ Ce projet implémente une plateforme d'analyse en temps réel des prix de crypto
 
 1. Cloner le repository
    ```bash
-   git clone 
+   git clone git@github.com:laBHaZe06/BigData_Crypto.git
    cd analyse/
    ```
+2. Allumer docker
+   ```bash
+   docker-compose up --build
+   ```
+3.Accèder à votre dashboard
+  ```bash
+http://localhost:3000
+```
+
    
