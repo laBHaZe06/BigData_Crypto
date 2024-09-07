@@ -12,6 +12,8 @@ RUN npm install
 # Copier tous les fichiers de l'application dans le répertoire de travail du conteneur
 COPY . .
 
+RUN npm cache clean --force
+
 # Construire l'application
 RUN npm run build
 

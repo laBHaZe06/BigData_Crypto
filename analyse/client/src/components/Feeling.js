@@ -52,7 +52,7 @@ const Feeling = ({ isDashboard = false }) => {
 
     
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       progressRef.current();
     }, 5000); // 20 seconds

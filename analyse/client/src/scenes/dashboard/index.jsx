@@ -5,7 +5,6 @@ import { tokens } from "../../theme";
 // import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/Header";
-import LineChart from "../../components/LineChart";
 import Feeling from "../../components/Feeling";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
@@ -15,9 +14,7 @@ import WebSocketComponent from '../../components/WebSocketComponent';
 const Dashboard = ({cryptoSymbol}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  
-  // console.log(cryptoSymbol);
-  // const latestPrice = prices ? prices[prices.length - 1].prices : "Loading...";
+
   if (!cryptoSymbol) {
     return (
       <Box m="20px">
@@ -126,7 +123,6 @@ const Dashboard = ({cryptoSymbol}) => {
                 >
                   Real time prices
                 </Typography>
-                <WebSocketComponent />
               </Box>
               <Box>
                 <IconButton>
@@ -136,8 +132,8 @@ const Dashboard = ({cryptoSymbol}) => {
                 </IconButton>
               </Box>
             </Box>
-            <Box height="250px" m="-20px 0 0 0">
-              <LineChart isDashboard={true} />
+            <Box height="250px" m="-10px 0 0 0">
+                <WebSocketComponent symbol={cryptoSymbol} />
             </Box>
           </Box>
           <Box

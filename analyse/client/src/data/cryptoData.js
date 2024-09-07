@@ -1,7 +1,7 @@
 const cryptoData = [
-    { name: "Bitcoin", symbol: "bitcoin" },
-    { name: "Ethereum", symbol: "ethereum" },
-    { name: "Cardano", symbol: "cardano" },
+    { name: "Bitcoin", symbol: "BTC" },
+    { name: "Ethereum", symbol: "ETH" },
+    { name: "Cardano", symbol: "ADA" },
     
   ];
 

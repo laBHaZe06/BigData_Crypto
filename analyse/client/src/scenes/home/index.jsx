@@ -3,7 +3,6 @@ import { Box, IconButton } from "@mui/material";
 // import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/Header";
-// import { WebSocketContext } from '../../context/WebSocketContext';
 
 const Home = () => {
 //   const theme = useTheme();

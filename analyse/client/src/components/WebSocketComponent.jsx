@@ -1,26 +1,39 @@
-import React, { useContext } from 'react';
-import { WebSocketContext } from '../context/WebSocketContext.js';
+import React, { useContext,useEffect,useState} from 'react';
+import { WebSocketContext } from '../context/WebSocketContext';
+import LineChart from './LineChart';
+import BoxPlotChart from './BoxPlotChart';
 
-const WebSocketComponent = () => {
-    const { messages } = useContext(WebSocketContext);
+const WebSocketComponent = ({ symbol }) => {
+    const [isLineChart, setIsLineChart] = useState(true);
+    const { data, setSymbol } = useContext(WebSocketContext);
 
-    // Filtrer les messages pour n'afficher que ceux liés aux prix des cryptomonnaies
-    const priceMessages = messages.filter(message => message.topic === 'crypto-price');
+    useEffect(() => {
+        setSymbol(symbol);
+    }, [setSymbol, symbol]);
 
-    if (!priceMessages || priceMessages.length === 0) {
-        return <div>Loading...</div>;
-    }
+    const handleChartToggle = () => {
+        setIsLineChart(prevState => !prevState);
+    };
 
     return (
-        <div>
-            {priceMessages.map((message, index) => (
-                <div key={index}>
-                    <h3>Prix pour {message.symbol} :</h3>
-                    <p>{message.price}</p>
-                </div>
-            ))}
-        </div>
+        <>
+
+            {isLineChart ? (
+                <LineChart data={data} isDashboard={true} />
+            ) : (
+                <BoxPlotChart data={data} isDashboard={true}  />
+            )}
+           
+            <button onClick={handleChartToggle} >
+                {isLineChart ? 'Afficher Chandeliers (BoxPlot)' : 'Afficher Courbes'}
+            </button>
+           
+
+     
+       
+        </>
     );
 };
 
+              
 export default WebSocketComponent;

@@ -76,7 +76,7 @@ const SidebarPro = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  Crypto-Viz
+                  crypto_viz
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -98,7 +98,7 @@ const SidebarPro = () => {
                   Analyse crypto markets
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Crypto-Viz
+                  crypto_viz
                 </Typography>
               </Box>
             </Box>

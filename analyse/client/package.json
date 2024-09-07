@@ -14,6 +14,7 @@
     "@mui/material": "^5.15.7",
     "@mui/x-data-grid": "^6.19.3",
     "@nivo/bar": "^0.84.0",
+    "@nivo/boxplot": "^0.87.0",
     "@nivo/geo": "^0.84.0",
     "@nivo/line": "^0.84.0",
     "@nivo/pie": "^0.84.0",
@@ -29,8 +30,8 @@
     "react-pro-sidebar": "^1.1.0-alpha.2",
     "react-router-dom": "^6.22.0",
     "react-scripts": "^5.0.1",
+    "react-use-websocket": "^4.8.1",
     "web-vitals": "^2.1.4",
-    "websocket": "^1.0.35",
     "yup": "^1.3.3"
   },
   "scripts": {

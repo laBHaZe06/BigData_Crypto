@@ -1,0 +1,8 @@
+gnome-terminal -- bash -c "docker-compose up mongodb; exec bash"
+gnome-terminal -- bash -c "docker-compose up redpanda; exec bash"
+gnome-terminal -- bash -c "docker-compose up redpanda-ui; exec bash"
+gnome-terminal -- bash -c "docker-compose up producer; exec bash"
+gnome-terminal -- bash -c "docker-compose up consumer; exec bash"
+gnome-terminal -- bash -c "docker-compose up wharehouse; exec bash"
+gnome-terminal -- bash -c "docker-compose up api; exec bash"
+gnome-terminal -- bash -c "docker-compose up client; exec bash"

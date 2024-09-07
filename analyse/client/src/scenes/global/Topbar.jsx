@@ -17,7 +17,7 @@ const Topbar = ({ onSearchSubmit }) => {
   const colorMode = useContext(ColorModeContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
-  const navigate = useNavigate(); // Utilisation de useNavigate pour la navigation
+  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
